@@ -1,6 +1,10 @@
 var app = new Vue({
-    el: '#app',
+    el: '#todos',
     data: {
-        message: 'Hello Vue!'
+        todos: [
+            { name: 'Apple', number: 4 },
+            { name: 'Cherry' },
+            { name: 'Peach', number: 5 }
+        ]
     }
 })
