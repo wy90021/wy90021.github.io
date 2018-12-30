@@ -1,4 +1,22 @@
+from google.cloud import datastore
+
+datastore_client = datastore.Client()
+kind = 'Todos'
+name = 'todo'
+todo_key = datastore_client.key(kind, name)
+todo = datastore.Entity(key=todo_key)
+todo['name'] = 'Milk'
+datastore_client.put(todo)
+
+
 def helloWorld(request):
+    datastore_client = datastore.Client()
+    kind = 'Todos'
+    name = 'todo'
+    todo_key = datastore_client.key(kind, name)
+    todo = datastore.Entity(key=todo_key)
+    todo['name'] = 'Milk'
+    datastore_client.put(todo)
     headers = {
         'Access-Control-Allow-Origin': '*'
     }
