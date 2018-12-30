@@ -14,15 +14,15 @@ def helloWorld(request):
     return (resp, 200, headers)
 
 
-def addTodo(name, quantity):
+def addTodo(request):
     todo_key = datastore_client.key(datastore_kind, str(uuid.uuid4()))
     todo = datastore.Entity(key=todo_key)
-    todo['name'] = name
-    todo['quantity'] = quantity
+    todo['name'] = request['name']
+    todo['quantity'] = request['quantity']
     todo['updated'] = time.ctime()
     datastore_client.put(todo)
 
 
 if __name__ == '__main__':
     helloWorld('')
-    addTodo('Apple', 4)
+    addTodo({name: 'Apple', quantity: 4})
