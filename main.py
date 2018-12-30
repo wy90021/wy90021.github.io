@@ -25,3 +25,4 @@ def addTodo(name, quantity):
 
 if __name__ == '__main__':
     helloWorld('')
+    addTodo('Apple', 4)
