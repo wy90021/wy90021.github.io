@@ -5,7 +5,7 @@ kind = 'Todos'
 name = 'todo'
 todo_key = datastore_client.key(kind, name)
 todo = datastore.Entity(key=todo_key)
-todo['name'] = 'Milk'
+todo['name'] = 'Apple'
 datastore_client.put(todo)
 
 
