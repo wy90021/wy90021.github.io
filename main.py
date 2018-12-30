@@ -25,4 +25,4 @@ def addTodo(request):
 
 if __name__ == '__main__':
     helloWorld('')
-    addTodo({name: 'Apple', quantity: 4})
+    addTodo({'name': 'Apple', 'quantity': 4})
