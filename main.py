@@ -34,7 +34,7 @@ def addTodo(request):
 def finishTodo(request):
     request_json = request.get_json()
     todo_key = datastore_client.key(datastore_kind, request_json.id)
-    todo = datastore.Entity(key=todo_key)
+    todo = datastore_client.get(key=todo_key)
     todo['done'] = True
     datastore_client.put(todo)
 
@@ -42,6 +42,5 @@ def finishTodo(request):
 if __name__ == '__main__':
     todo_key = datastore_client.key(
         datastore_kind, '0a59ec71-d119-4371-b16c-35e73e9b9bc9')
-    todo = datastore.Entity(key=todo_key)
-    todo['done'] = True
-    datastore_client.put(todo)
+    todo = datastore_client.get(key=todo_key)
+    print(todo)
