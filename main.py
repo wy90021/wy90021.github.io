@@ -39,6 +39,9 @@ def finishTodo(request):
     todo['updated'] = time.ctime()
     datastore_client.put(todo)
 
+    headers = {
+        'Access-Control-Allow-Origin': '*'
+    }
     query = datastore_client.query(kind=datastore_kind)
     resp = json.dumps(list(query.fetch()))
     return (resp, 200, headers)
