@@ -13,7 +13,8 @@ def helloWorld(request):
         'Access-Control-Allow-Origin': '*'
     }
     query = datastore_client.query(kind=datastore_kind)
-    resp = json.dumps(list(query.fetch()))
+    resp = json.dumps(sorted(list(query.fetch()),
+                             key=lambda todo: todo['updated'], reverse=True))
     return (resp, 200, headers)
 
 
@@ -47,7 +48,8 @@ def addTodo(request):
         'Access-Control-Allow-Origin': '*'
     }
     query = datastore_client.query(kind=datastore_kind)
-    resp = json.dumps(list(query.fetch()))
+    resp = json.dumps(sorted(list(query.fetch()),
+                             key=lambda todo: todo['updated'], reverse=True))
     return (resp, 200, headers)
 
 
@@ -75,12 +77,10 @@ def finishTodo(request):
         'Access-Control-Allow-Origin': '*'
     }
     query = datastore_client.query(kind=datastore_kind)
-    resp = json.dumps(list(query.fetch()))
+    resp = json.dumps(sorted(list(query.fetch()),
+                             key=lambda todo: todo['updated'], reverse=True))
     return (resp, 200, headers)
 
 
 if __name__ == '__main__':
-    todo_key = datastore_client.key(
-        datastore_kind, '0a59ec71-d119-4371-b16c-35e73e9b9bc9')
-    todo = datastore_client.get(key=todo_key)
-    print(todo)
+    helloWorld('')

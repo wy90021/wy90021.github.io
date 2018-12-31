@@ -20,7 +20,7 @@
 <body>
     <div id="todos" class="col align-items-center">
         <br>
-        <b-btn class="col-12" v-b-toggle="'addTodo'" variant="primary">
+        <b-btn class="col-12" v-b-toggle="'addTodo'" variant="danger">
             Create Item
         </b-btn>
         <br>
@@ -45,7 +45,7 @@
                 </b-form-invalid-feedback>
             </b-input-group>
             <br>
-            <b-btn class="col-12" v-on:click="addTodo(name,quantity)">
+            <b-btn v-b-toggle="'addTodo'" class="col-12" v-on:click="addTodo(name,quantity)" variant="primary">
                 Add
             </b-btn>
         </b-collapse>
@@ -53,12 +53,12 @@
         <b-list-group>
             To Buy
             <b-list-group-item button v-for="todo in todos" v-if="!todo.done">
-                <b-btn class="col-12" v-b-toggle="todo.id" variant="primary" v-bind:disabled="todo.done">
+                <b-btn class="col-12" v-b-toggle="todo.id" variant="warning" v-bind:disabled="todo.done">
                     {{ todo.name }}
                     <b-badge variant="primary" pill>{{todo.quantity}}</b-badge>
                 </b-btn>
                 <b-collapse v-bind:id="todo.id" class="mt-2">
-                    <b-btn class="col-12" v-on:click="finishTodo(todo.id)">Done</b-btn>
+                    <b-btn class="col-12" v-on:click="finishTodo(todo.id)" variant="success">Done</b-btn>
                 </b-collapse>
             </b-list-group-item>
         </b-list-group>
@@ -68,6 +68,7 @@
             <b-list-group-item button v-for="todo in todos" v-if="todo.done">
                 <b-btn class="col-12" v-b-toggle="todo.id" variant="success" v-bind:disabled="todo.done">
                     {{ todo.name }}
+                    ({{ todo.updated }})
                     <b-badge variant="primary" pill>{{todo.quantity}}</b-badge>
                 </b-btn>
                 <b-collapse v-bind:id="todo.id" class="mt-2">
