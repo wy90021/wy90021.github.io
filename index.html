@@ -30,6 +30,33 @@
                 </b-collapse>
             </b-list-group-item>
         </b-list-group>
+        <b-btn v-b-toggle="'addTodo'" variant="primary">
+            Create Item
+        </b-btn>
+        <b-collapse id="addTodo">
+            <b-input-group size="lg" prepend="$" append=".00">
+                <b-form-input></b-form-input>
+            </b-input-group>
+            <br>
+
+            <!-- Using slots -->
+            <b-input-group>
+                <b-input-group-text slot="append">
+                    <strong class="text-danger">!</strong>
+                </b-input-group-text>
+                <b-form-input></b-form-input>
+            </b-input-group>
+            <br>
+
+            <!-- Using components -->
+            <b-input-group prepend="Username">
+                <b-form-input></b-form-input>
+                <b-input-group-append>
+                    <b-btn variant="outline-success">Button</b-btn>
+                    <b-btn variant="info">Button</b-btn>
+                </b-input-group-append>
+            </b-input-group>
+        </b-collapse>
     </div>
     <script src="./control.js"></script>
 </body>

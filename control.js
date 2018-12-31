@@ -2,13 +2,14 @@ var app = new Vue({
     el: '#todos',
     data: {
         todos: null,
-        "todo.done": true
+        pageStartup: false
     },
     mounted: function () {
         axios.
             get('https://us-central1-todo-188905.cloudfunctions.net/get').
             then(response => (
-                this.todos = response.data
+                this.todos = response.data,
+                this.pageStartup = true
             ))
     },
     methods: {
