@@ -27,9 +27,21 @@ def addTodo(request):
         todo['quantity'] = request_json['quantity']
     todo['updated'] = time.ctime()
     todo['id'] = id
+    todo['done'] = False
+    datastore_client.put(todo)
+
+
+def finishTodo(request):
+    request_json = request.get_json()
+    todo_key = datastore_client.key(datastore_kind, request_json.id)
+    todo = datastore.Entity(key=todo_key)
+    todo['done'] = True
     datastore_client.put(todo)
 
 
 if __name__ == '__main__':
-    helloWorld('')
-    #addTodo({'name': 'Apple', 'quantity': 4})
+    todo_key = datastore_client.key(
+        datastore_kind, '0a59ec71-d119-4371-b16c-35e73e9b9bc9')
+    todo = datastore.Entity(key=todo_key)
+    todo['done'] = True
+    datastore_client.put(todo)
