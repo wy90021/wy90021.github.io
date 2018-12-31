@@ -21,15 +21,13 @@
     <div id="todos">
         <b-list-group>
             <b-list-group-item button v-for="todo in todos">
-                <b-btn v-b-toggle.collapse1 variant="primary">{{ todo.name }} ({{todo.updated}})</b-btn>
-                <b-badge variant="primary" pill>{{todo.quantity}}</b-badge>
-                <b-collapse id="collapse1" class="mt-2">
+                <b-btn v-b-toggle="todo.id" variant="primary">
+                    {{ todo.name }}
+                    <b-badge variant="primary" pill>{{todo.quantity}}</b-badge>
+                </b-btn>
+                <b-collapse v-bind:id="todo.id" class="mt-2">
                     <b-card>
                         <p class="card-text">Collapse contents Here</p>
-                        <b-btn v-b-toggle.collapse1_inner size="sm">Toggle Inner Collapse</b-btn>
-                        <b-collapse id=collapse1_inner class="mt-2">
-                            <b-card>Hello!</b-card>
-                        </b-collapse>
                     </b-card>
                 </b-collapse>
             </b-list-group-item>
