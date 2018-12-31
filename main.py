@@ -36,6 +36,7 @@ def finishTodo(request):
     todo_key = datastore_client.key(datastore_kind, request_json.id)
     todo = datastore_client.get(key=todo_key)
     todo['done'] = True
+    todo['updated'] = time.ctime()
     datastore_client.put(todo)
 
 
