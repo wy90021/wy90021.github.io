@@ -12,8 +12,7 @@ def helloWorld(request):
         'Access-Control-Allow-Origin': '*'
     }
     query = datastore_client.query(kind=datastore_kind)
-    print(json.dumps(list(query.fetch())))
-    resp = '{"todos": [{"name": "apple", "number": 6}, {"name": "cherry", "number": "1LB"}]}'
+    resp = json.dumps(list(query.fetch()))
     return (resp, 200, headers)
 
 
