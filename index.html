@@ -19,7 +19,9 @@
 
 <body>
     <div id="todos">
+        <br>
         <b-list-group>
+            To Buy
             <b-list-group-item button v-for="todo in todos" v-if="!todo.done">
                 <b-btn v-b-toggle="todo.id" variant="primary" v-bind:disabled="todo.done">
                     {{ todo.name }}
@@ -32,8 +34,9 @@
         </b-list-group>
         <br>
         <b-list-group>
+            Done
             <b-list-group-item button v-for="todo in todos" v-if="todo.done">
-                <b-btn v-b-toggle="todo.id" variant="primary" v-bind:disabled="todo.done">
+                <b-btn v-b-toggle="todo.id" variant="success" v-bind:disabled="todo.done">
                     {{ todo.name }}
                     <b-badge variant="primary" pill>{{todo.quantity}}</b-badge>
                 </b-btn>
