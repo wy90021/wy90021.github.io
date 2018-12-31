@@ -11,7 +11,7 @@ def helloWorld(request):
         'Access-Control-Allow-Origin': '*'
     }
     resp = '{"todos": [{"name": "apple", "number": 6}, {"name": "cherry", "number": "1LB"}]}'
-    return (resp, 200, headers)
+    return (request, 200, headers)
 
 
 def addTodo(request):
