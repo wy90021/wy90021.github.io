@@ -2,7 +2,8 @@ var app = new Vue({
     el: '#todos',
     data() {
         return {
-            todos: null
+            todos: null,
+            "todo.done": true
         }
     },
     mounted() {
