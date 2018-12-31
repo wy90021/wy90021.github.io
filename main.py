@@ -2,6 +2,7 @@ from google.cloud import datastore
 import uuid
 import time
 import json
+import logging
 
 datastore_client = datastore.Client()
 datastore_kind = 'Todos'
@@ -32,7 +33,7 @@ def addTodo(request):
 
 
 def finishTodo(request):
-    print(request)
+    logging.info('bo ' + request)
     request_json = request.get_json()
     todo_key = datastore_client.key(datastore_kind, request_json['id'])
     todo = datastore_client.get(key=todo_key)
