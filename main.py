@@ -15,10 +15,13 @@ def helloWorld(request):
 
 
 def addTodo(request):
+    request_json = request.get_json()
     todo_key = datastore_client.key(datastore_kind, str(uuid.uuid4()))
     todo = datastore.Entity(key=todo_key)
-    todo['name'] = request['name']
-    todo['quantity'] = request['quantity']
+    if 'name' in request_json:
+        todo['name'] = request['name']
+    if 'quantity' in request_json:
+        todo['quantity'] = request['quantity']
     todo['updated'] = time.ctime()
     datastore_client.put(todo)
 
