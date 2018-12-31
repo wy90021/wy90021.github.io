@@ -1,6 +1,7 @@
 from google.cloud import datastore
 import uuid
 import time
+import json
 
 datastore_client = datastore.Client()
 datastore_kind = 'Todos'
@@ -10,6 +11,10 @@ def helloWorld(request):
     headers = {
         'Access-Control-Allow-Origin': '*'
     }
+    query = datastore_client.query(kind=datastore_kind)
+    query_iter = query.fetch()
+    for entity in query_iter:
+        print(json.dumps(entity))
     resp = '{"todos": [{"name": "apple", "number": 6}, {"name": "cherry", "number": "1LB"}]}'
     return (resp, 200, headers)
 
@@ -28,4 +33,4 @@ def addTodo(request):
 
 if __name__ == '__main__':
     helloWorld('')
-    addTodo({'name': 'Apple', 'quantity': 4})
+    #addTodo({'name': 'Apple', 'quantity': 4})
