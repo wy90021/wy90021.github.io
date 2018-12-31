@@ -43,6 +43,13 @@ def addTodo(request):
     todo['done'] = False
     datastore_client.put(todo)
 
+    headers = {
+        'Access-Control-Allow-Origin': '*'
+    }
+    query = datastore_client.query(kind=datastore_kind)
+    resp = json.dumps(list(query.fetch()))
+    return (resp, 200, headers)
+
 
 def finishTodo(request):
     if request.method == 'OPTIONS':
