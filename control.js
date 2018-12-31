@@ -12,6 +12,14 @@ var app = new Vue({
                 this.todos = response.data
             ))
     },
+    computed: {
+        nameState: function () {
+            return this.name.length > 2 ? true : false
+        },
+        quantityState: function () {
+            return this.quantity.length > 0 ? true : false
+        }
+    },
     methods: {
         finishTodo: function (id) {
             axios.
