@@ -21,7 +21,7 @@
     <div id="todos">
         <b-list-group>
             <b-list-group-item button v-for="todo in todos">
-                {{todo.quantity}} {{ todo.name }}
+                {{ todo.name }} - {{todo.quantity}} ({{todo.updated}})
             </b-list-group-item>
         </b-list-group>
     </div>
