@@ -9,7 +9,7 @@ var app = new Vue({
         axios.
             get('https://us-central1-todo-188905.cloudfunctions.net/get').
             then(response => (
-                this.todos = response.data.todos
+                this.todos = response.data
             ))
     }
 })
