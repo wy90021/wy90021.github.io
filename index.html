@@ -21,7 +21,7 @@
     <div id="todos">
         <b-list-group>
             <b-list-group-item button v-for="todo in todos">
-                <b-btn v-b-toggle="todo.id" variant="primary">
+                <b-btn v-b-toggle="todo.id" variant="primary" size="lg">
                     {{ todo.name }}
                     <b-badge variant="primary" pill>{{todo.quantity}}</b-badge>
                 </b-btn>
