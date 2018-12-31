@@ -20,6 +20,27 @@
 <body>
     <div id="todos">
         <br>
+        <b-btn v-b-toggle="'addTodo'" variant="primary">
+            Create Item
+        </b-btn>
+        <br>
+        <b-collapse id="addTodo">
+            <br>
+            <b-input-group prepend="Name">
+                <b-form-input v-model="name">
+                </b-form-input>
+            </b-input-group>
+            <br>
+
+            <b-input-group prepend="Quantity">
+                <b-form-input v-model="quantity"></b-form-input>
+            </b-input-group>
+            <br>
+            <b-btn v-on:click="addTodo(name,quantity)">
+                Add
+            </b-btn>
+        </b-collapse>
+        <br>
         <b-list-group>
             To Buy
             <b-list-group-item button v-for="todo in todos" v-if="!todo.done">
@@ -45,26 +66,6 @@
                 </b-collapse>
             </b-list-group-item>
         </b-list-group>
-        <br>
-        <b-btn v-b-toggle="'addTodo'" variant="primary">
-            Create Item
-        </b-btn>
-        <b-collapse id="addTodo">
-            <br>
-            <b-input-group prepend="Name">
-                <b-form-input v-model="name">
-                </b-form-input>
-            </b-input-group>
-            <br>
-
-            <b-input-group prepend="Quantity">
-                <b-form-input v-model="quantity"></b-form-input>
-            </b-input-group>
-            <br>
-            <b-btn v-on:click="addTodo(name,quantity)">
-                Add
-            </b-btn>
-        </b-collapse>
     </div>
     <script src="./control.js"></script>
 </body>
