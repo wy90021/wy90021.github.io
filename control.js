@@ -14,7 +14,7 @@ var app = new Vue({
     methods: {
         finishTodo: function (id) {
             axios.
-                get('https://us-central1-todo-188905.cloudfunctions.net/finishTodo').
+                post('https://us-central1-todo-188905.cloudfunctions.net/finishTodo', { 'id': id }).
                 then(response => (
                     this.todos = response.data
                 ))

@@ -32,6 +32,7 @@ def addTodo(request):
 
 
 def finishTodo(request):
+    print(request)
     request_json = request.get_json()
     todo_key = datastore_client.key(datastore_kind, request_json['id'])
     todo = datastore_client.get(key=todo_key)
