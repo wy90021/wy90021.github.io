@@ -20,7 +20,19 @@
 <body>
     <div id="todos">
         <b-list-group>
-            <b-list-group-item button v-for="todo in todos">
+            <b-list-group-item button v-for="todo in todos" v-if="!todo.done">
+                <b-btn v-b-toggle="todo.id" variant="primary" v-bind:disabled="todo.done">
+                    {{ todo.name }}
+                    <b-badge variant="primary" pill>{{todo.quantity}}</b-badge>
+                </b-btn>
+                <b-collapse v-bind:id="todo.id" class="mt-2">
+                    <b-btn v-on:click="finishTodo(todo.id)">Done</b-btn>
+                </b-collapse>
+            </b-list-group-item>
+        </b-list-group>
+        <br>
+        <b-list-group>
+            <b-list-group-item button v-for="todo in todos" v-if="todo.done">
                 <b-btn v-b-toggle="todo.id" variant="primary" v-bind:disabled="todo.done">
                     {{ todo.name }}
                     <b-badge variant="primary" pill>{{todo.quantity}}</b-badge>
