@@ -26,7 +26,7 @@
                     <b-badge variant="primary" pill>{{todo.quantity}}</b-badge>
                 </b-btn>
                 <b-collapse v-bind:id="todo.id" class="mt-2">
-                    <b-btn>Done</b-btn>
+                    <b-btn v-on:click="finishTodo(todo.id)">Done</b-btn>
                 </b-collapse>
             </b-list-group-item>
         </b-list-group>
