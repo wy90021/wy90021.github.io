@@ -83,4 +83,4 @@ def finishTodo(request):
 
 
 if __name__ == '__main__':
-    helloWorld('')
+    print(helloWorld(''))
